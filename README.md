@@ -1,5 +1,8 @@
 # Warsztaty - matlab
 
+### Video tutoriale
+Znajdziecie je [tutaj](https://www.dropbox.com/sh/sj14od68plbydf1/AACGJ_iTjOyxTKb-7OmWYC51a?dl=0)
+
 ### Juliabox
 Chociaż zajęcia stanowią wprowadzenie do środowiska MATLAB, przynajmniej na razie, do ćwiczeń w domu możecie używać platformy Juliabox (www.juliabox.org). Znajdziecie tam interaktywne środowisko umożliwiające korzystanie z Julii - języka programowania wzorowanego na MATLABie, który pod wieloma względami jest od MATLABa lepszy. Istotne jest przede wszystkim to, że Julia jest darmowa (MATLAB nie), szybsza i wygodniejsza, ale bardzo do MATLABA podobna. MATLAB posiada wiele pakietów do analizy danych EEG, których nie ma Julia, także z juliabox będziecie korzystać tylko przez kilka tygodni, powtarzając sobie podstawy.
 
