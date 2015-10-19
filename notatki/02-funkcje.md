@@ -1,3 +1,5 @@
+## Funkcje
+
 Funkcje zmieniają nam dane. Robią za nas ciężką robotę.  
 **Funkcje są naprawdę fajne!**  
 `dane -> funkcja -> dane`  
