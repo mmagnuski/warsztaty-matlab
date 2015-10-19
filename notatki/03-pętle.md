@@ -85,6 +85,28 @@ for i = 1:length(A)
 end
 ```
 
+#### Ćwiczenia
+**ćwiczenie 1**
+Mamy dwa wektory:
+```matlab
+A = [3,1,6,9,11,8]
+B = zeros(size(A))
+```
+Napisz pętlę, która bierze kolejne elementy z wektora A, dodaje do nich 3 i wynik umieszcza w kolejnym elemencie B.
+
+**ćwiczenie 2**
+Mamy wektor:
+```matlab
+A = randi(100, 1, 1000)
+```
+Napisz pętlę, która tworzy wektor C, taki że jego kolejne elementy to sumy kolejnych sąsiadujących elementów z wektora A.
+Na przykład powinny zachodzić zależności:
+```matlab
+C(1) == A(1) + A(2)
+C(3) == A(3) + A(4)
+```
+
+#### Automatyzacja wczytywania i przetwarzania plików
 Gdybyśmy tylko mieli liste plików moglibyśmy zrobić to, co chcemy pętlą!
 ```matlab
 % stwórzmy najpierw hipotetyczną listę plików
