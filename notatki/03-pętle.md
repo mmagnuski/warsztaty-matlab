@@ -1,4 +1,4 @@
-### Zajęcia 3
+## Zajęcia 3 - pętle
 
 #### Wstęp
 * kartkóweczka
@@ -23,15 +23,24 @@
   % w polu data jest macierz z danymi (ale jest ona 3D - elektrody x czas x epoki)
   % możemy w związku z tym adresować pole data tak jak macierz
   EEG.data(12, :, 1) % <- 12 elektroda, cały czas, pierwsza epoka
+  
+  % trochę bardziej skomplikowana sytuacja: struktura w strukturze:
+  EEG.event
+  
+  % struktura event to taka kartoteka wydarzeń w sygnale (np. prezentacja
+  % bodźca czy odpowiedź osoby badanej) - ma tyle 'kart' ile wydarzeń
+  % a każda z kart ma pola opisujące dane wydarzenie:
+  EEG.event(2).type
+  EEG.event(2).latency
   ```
 
 #### ERP
-* jak zrobić ERPa
+* jak zrobić ERPa?
   - z wykorzystaniem interfejsu i `eegh`
-  - za pomocą `mean()`
+  - za pomocą funkcji `mean()`
 * robimy funkcję, która liczy i ładnie rysuje erpa z danych
   - poznajemy `xlabel` i `ylabel`
-  - ew. zmieniamy `FontSize`
+  - ew. zmieniamy `FontSize`, `LineWidth`
 
 
 #### automatyzacja - pętle
@@ -43,7 +52,7 @@
 
 * pętla nas wybawi! (hymn samobójców)
 
-najprostszy przykład:
+Ale po kolei, najpierw najprostszy przykład:
 ```matlab
 i = 5;
 i
@@ -93,6 +102,9 @@ end
 ```
 
 Zobaczmy co daje nam funkcja `dir`
+```matlab
+pliki = dir('C:')
+```
 
 Dalej:
 - dzięki `dir` dostajemy listę plików taką jak ta przy ostatniej pętli
