@@ -103,7 +103,7 @@ end
 
 Zobaczmy co daje nam funkcja `dir`
 ```matlab
-pliki = dir('C:')
+pliki = dir('C:\')
 ```
 
 Dalej:
