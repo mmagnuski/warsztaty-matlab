@@ -86,7 +86,7 @@ end
 ```
 
 #### Ćwiczenia
-**ćwiczenie 1**
+**ćwiczenie 1**  
 Mamy dwa wektory:
 ```matlab
 A = [3,1,6,9,11,8]
@@ -94,7 +94,7 @@ B = zeros(size(A))
 ```
 Napisz pętlę, która bierze kolejne elementy z wektora A, dodaje do nich 3 i wynik umieszcza w kolejnym elemencie B.
 
-**ćwiczenie 2**
+**ćwiczenie 2**  
 Mamy wektor:
 ```matlab
 A = randi(100, 1, 1000)
