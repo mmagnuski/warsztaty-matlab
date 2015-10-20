@@ -4,6 +4,9 @@
 * kartkóweczka
 * wątpliwości i pytania słowem nie do opisania
 
+#### Dane
+Dane znajdziecie [tutaj](https://www.dropbox.com/sh/p36697ph7py06q1/AAAteqj3Oia28VeAbQCpnizba?dl=0).
+
 #### struktury (EEG)
 * uruchamianie eeglaba (po uruchomieniu możemy zrobić `clear` bo eeglab wrzuca nam do workspace'a dużo śmieci)
 * nawigowanie po folderach z poziomu matlaba
