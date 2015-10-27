@@ -1,4 +1,4 @@
-## Zajęcia 3 - pętle
+## Zajęcia 3 - erpy, ploty i wstęp do pętli
 
 #### Wstęp
 * kartkóweczka
@@ -108,30 +108,3 @@ Na przykład powinny zachodzić zależności:
 C(1) == A(1) + A(2)
 C(3) == A(3) + A(4)
 ```
-
-#### Automatyzacja wczytywania i przetwarzania plików
-Gdybyśmy tylko mieli liste plików moglibyśmy zrobić to, co chcemy pętlą!
-```matlab
-% stwórzmy najpierw hipotetyczną listę plików
-lista(1).name = 'plik1.set';
-lista(2).name = 'plik2.set';
-lista(3).name = 'plik3.set';
-
-% zauważmy że length działa także dla struktur:
-length(lista)
-
-% teraz możemy to zrobić tak
-for s = 1:length(lista)
-	lista(s).name
-end
-```
-
-Zobaczmy co daje nam funkcja `dir`
-```matlab
-pliki = dir('C:\')
-```
-
-Dalej:
-- dzięki `dir` dostajemy listę plików taką jak ta przy ostatniej pętli
-- w związku z tym możemy skorzystać z pętli i po kolei podawać nazwy plików do funkcji `pop_loadset` - a następnie do naszej funkcji `plotuj_to`
-- gdy nasza pętla będzie już działać doświadczycie magicznego momentu `sit back and relax` vel `możesz wyjść z psem na spacer` - kiedy to komputer się za Was męczy, a Wy możecie odpocząć.
