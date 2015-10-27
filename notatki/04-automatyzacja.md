@@ -57,3 +57,11 @@ Dalej:
 - do funkcji `plotuj_to` dodajemy baseline correction. Pamiętajmy, że `EEG.times` zawiera czas, a funkcja `find` pozwala nam znaleźć wartości prawdziwe (niezerowe), natomiast `EEG.times == 0` zwraca nam wektor prawd i fałszy.
 
 - a co gdybyśmy chcieli robić ERPy dla konkretnych warunków? Zerknijmy w strukturę `EEG.epoch`:
+  ```matlab
+  EEG.epoch(5)
+  ```
+  Moglibyśmy napisać funkcję, która idzie przez tę struktur i sprawdza eventy w poszukiwaniu tych, które nas interesuj, ale zrobimy to na razie nieco prościej - zainstalujcie mój pakiet [braintools](https://github.com/mmagnuski/braintools). Skorzystamy z obiektu `EpochDict` (trzeba zainstalować braintools aby działał):
+  ```matlab
+  ed = EpochDict(EEG);
+  ed('face0')
+  ```
