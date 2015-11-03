@@ -55,5 +55,23 @@ Dalej:
 - gdy nasza pętla będzie już działać doświadczycie magicznego momentu `sit back and relax` vel `możesz wyjść z psem na spacer` - kiedy to komputer się za Was męczy, a Wy możecie odpocząć.
 
 - do funkcji `plotuj_to` dodajemy baseline correction. Pamiętajmy, że `EEG.times` zawiera czas, a funkcja `find` pozwala nam znaleźć wartości prawdziwe (niezerowe), natomiast `EEG.times == 0` zwraca nam wektor prawd i fałszy.
+- zanim przejdziemy dalej poznamy macierze komorkowe. Tak jak wektory pozwalaja nam przetrzymywac w uporzadkowany sposob kolejne wartosci, macierze komorkowe przetrzymuja cale obiekty:
+  ```matlab
+  mackom = cell(3,1);
+  mackom{1} = [1, 5, 8, 2];
+  mackom{2} = 'wombat';
+  mackom{3} = rand(4,4);
+  ```
+  
+- sprobujemy teraz wczytac za pomoca petli pliki eeg do kolejnych komorek macierzy komorkowej. Sama czesc do wczytywania kolejnych osob pozostaje taka sama, kod wyglada tak:
+  ```matlab
+  fls = dir('*.set');
+  num_files = length(fls);
+  eeg = cell(num_fls, 1);
+  for i = 1:num_fls
+  	eeg{i} = pop_loadset(fls(i).name);
+  end
+  ```
 
 - a co gdybyśmy chcieli robić ERPy dla konkretnych warunków? Zerknijmy w strukturę `EEG.epoch`:
+- aby nie meczyc sie zanadto z kodem skorzystamy z pakietu [`braintools`](https://github.com/mmagnuski/braintools). Znajdziecie w nim obiekt `EpochDict`, który znajduje nam eventy, wzgledem ktorych dane byly epokowane i podaje numery epok należacych do konkretnych warunkow
