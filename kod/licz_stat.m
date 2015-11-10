@@ -24,4 +24,4 @@ cfg.design(2,:) = tmp(:);
 cfg.neighbours = get_neighbours('EGI64');
 
 % cluster-correction with fieldtrip
-stat = ft_timelockanalysis(cfg, fls{:});
+stat = ft_timelockstatistics(cfg, fls{:});
