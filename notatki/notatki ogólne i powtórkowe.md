@@ -61,4 +61,10 @@ ans =
       bytes: 597016
       isdir: 0
     datenum: 7.3624e+05
+
+lista(2).name
+ans = 
+    'faces_e_24.set'
 ```
+Dzięki komendzie `dir` w powyższym przykadzie na kolejnych kartach struktury `lista` mamy dostęp do pola `name`, które zawiera nazwę danego pliku (spełniającego podane kryteria, w naszym wypadku `*.set`). W związku z tym aby użyć trzeciej nazwy pliku piszemy `lista(3).name`, a aby użyć siódmej `lista(7).name` itd.
+`dir` jest bardzo przydatne gdy chcemy skorzystać z pętli do wczytywania kolejnych plików. Wystarczy nam wtedy pętla `for i = 1:length(lista)` oraz gdzies wewnątrz tej pętli możemy podawać nazwy plików funkcji wczytującej dane za pomocą: `lista(i).name`.
