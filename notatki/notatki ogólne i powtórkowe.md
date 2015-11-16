@@ -27,12 +27,7 @@ Normalnie gdy wczytujemy pliki w matlabie musimy podawać całą ścieżkę do p
 % folderu D:\DANE\super projekt\badanie 1\EEG\
 cd('D:\DANE\super projekt\badanie 1\EEG\')
 ```
-Często nie będziemy jednak ręcznie wpisywać nazw plików, ponieważ nam się nie chce (lenistwo jest ważną cechą programisty). Korzystamy wtedy z komendy `dir`:
-```
-dir
-
-```
-Gdy wpiszemy `dir` matlab domyślnie sprawdza folder w którym obecnie siedzi i wypisuje jego zawartość (foldery i pliki) np.:
+Często nie będziemy jednak ręcznie wpisywać nazw plików, ponieważ nam się nie chce (lenistwo jest ważną cechą programisty). Korzystamy wtedy z komendy `dir`. Gdy wpiszemy w oknie komend `dir` matlab domyślnie sprawdza folder w którym obecnie siedzi i wypisuje jego zawartość (foldery i pliki) np.:
 ```
 >> dir
 
