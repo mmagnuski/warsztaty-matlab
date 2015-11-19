@@ -62,12 +62,12 @@ eegDb
 
 % find and add eeglab folder and basic eeglab functions:
 eeglab_dir = folder_name('D:\wombat', 'eeglab');
-addpath(eeglab_dir);
+addpath(fullfile('D:\wombat', eeglab_dir));
 eeg_path('add');
 
 fieldtrip_dir = folder_name('D:\wombat', 'fieldtrip');
 if fieldtrip_dir
-	addpath(fieldtrip_dir);
+	addpath(fullfile('D:\wombat', fieldtrip_dir));
 
 	% initialize fieldtrip
 	ft_defaults;
