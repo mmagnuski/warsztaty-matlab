@@ -53,9 +53,9 @@ cd('D:\wombat\braintools');
 cd('D:\wombat\eegDb');
 !git pull
 
-% add paths to braintools
-% (without opening the GUI)
+% add paths to braintools and warsztaty
 addpath('D:\wombat\braintools');
+addpath('D:\wombat\warsztaty-matlab\kod');
 braintools;
 
 % find and add eeglab folder and basic eeglab functions:
