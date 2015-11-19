@@ -81,3 +81,10 @@ FieldTripa możecie pobrać [stąd](http://www.fieldtriptoolbox.org/download). M
 ftp://ftp.fieldtriptoolbox.org/pub/fieldtrip/
 ```
 Wybierzcie najnowszą wersję lite fieldtripa (nie zawiera części ciężkich plików, które i tak nie będą nam potrzebne).
+
+#### Dalej:
+`eeg2ftrip()` (z `braintools`) - konwertuje nam format EEG eelgaba na fieldtripowy format
+większość podstawowych funkcji fieldtripa zaczyna się na `ft_` - wpiszcie sobie `ft_` i naciśnijcie tab (trzeba będzie prawdopodobnie chwilę poczekać)
+
+`ft_timelockedanalysis` - sprawdzić możecie dokumentację z użyciem komendy `doc` albo `help`.
+`ft_freqanalysis` - do częstotliwościowej analizy
