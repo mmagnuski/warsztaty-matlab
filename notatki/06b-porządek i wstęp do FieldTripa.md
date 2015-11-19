@@ -89,3 +89,33 @@ większość podstawowych funkcji fieldtripa zaczyna się na `ft_` - wpiszcie so
 
 `ft_timelockedanalysis` - sprawdzić możecie dokumentację z użyciem komendy `doc` albo `help`.
 `ft_freqanalysis` - do częstotliwościowej analizy
+
+#### ERPy
+
+Sprawdzilismy jak wygladaja erpy z roznych ilosci triali:
+```matlab
+% robimy erpy dla różnych ilości triali
+cfg = [];
+cfg.trials = 1:10;
+erp_10 = ft_timelockanalysis(cfg, eeg);
+cfg.trials = 1:30;
+erp_30 = ft_timelockanalysis(cfg, eeg);
+cfg.trials = 1:50;
+erp_50 = ft_timelockanalysis(cfg, eeg);
+cfg.trials = 'all';
+erp_all = ft_timelockanalysis(cfg, eeg);
+
+
+% plotujemy te erpy
+col = repmat(linspace(0.5, 0, 4)', [1,3]);
+
+plot(erp.time, erp_10.avg(47,:), ...
+    'color', col(1,:));
+hold on
+plot(erp.time, erp_30.avg(47,:), ...
+    'color', col(2,:));
+plot(erp.time, erp_50.avg(47,:), ...
+    'color', col(3,:));
+plot(erp.time, erp_all.avg(47,:), ...
+    'color', col(4,:));
+```
