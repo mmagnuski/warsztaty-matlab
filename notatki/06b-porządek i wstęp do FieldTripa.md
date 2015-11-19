@@ -5,8 +5,7 @@
 * instalujemy git'a i robimy porządek
 * tworzymy skrytp do dodawania ścieżek i ściągania zmian z GitHub'a
 * wstęp do FieldTripa
-* analizy grupowe 
-* wyniki i poprawy
+* analizy grupowe
 
 
 ### porządek!
