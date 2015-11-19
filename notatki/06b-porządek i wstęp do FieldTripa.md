@@ -57,13 +57,14 @@ cd('D:\wombat\eegDb');
 addpath('D:\wombat\braintools');
 addpath('D:\wombat\warsztaty-matlab\kod');
 braintools;
+addpath('D:\wombat\eegDb');
+eegDb
 
 % find and add eeglab folder and basic eeglab functions:
 eeglab_dir = folder_name('D:\wombat', 'eeglab');
 addpath(eeglab_dir);
 eeg_path('add');
 
-addpath('D:\wombat\eegDb');
 fieldtrip_dir = folder_name('D:\wombat', 'fieldtrip');
 if fieldtrip_dir
 	addpath(fieldtrip_dir);
