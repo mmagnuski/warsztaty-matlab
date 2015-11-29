@@ -58,4 +58,25 @@ for t = 20:100
 end
 ```
 
-Wersja bardziej zaawansowana - na razie tylko w tutorialu.
+Wersja bardziej zaawansowana - w całości omówiona jest w tutorialu. Poniżej widzimy efekt końcowy tego tutoriala czyli kod:
+```matlab
+% najpierw:
+% 1. wczytujemy jakieś dane jako EEG
+% 2. sprawdzamy gdzie dla 47 elektrody jest peak ERPa
+% 3. zapisujemy sobie  w zmiennej peak numer próbki 
+%    w której występuje ten wierzchołek
+
+wszystkie_triale = 1:size(EEG.data, 3);
+erp_val = zeros(100, 95);
+
+for n = 5:100
+	for i = 1:100
+		trials = losuj_n(wszystkie_triale, n);
+		erp = give_erp(EEG, 47, trials);
+		erp_val(i, n) = erp(peak);
+	end
+end
+
+% wyrysowujemy sobie wyniki
+plot_mat_rows(5:100, erp_val, [0.01, 0.05, 0.1]);
+```
