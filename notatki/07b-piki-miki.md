@@ -80,3 +80,24 @@ end
 % wyrysowujemy sobie wyniki
 plot_mat_rows(5:100, erp_val, [0.01, 0.05, 0.1]);
 ```
+
+```matlab
+twarze_prosto = ktory_war(EEG, 'face_0');
+
+cfg = [];
+cfg.trials = twarze_prosto;
+erp_twarze_prosto = ft_timelockanalysis(...
+    cfg, eeg);
+
+twarze_odwrotnie = ktory_war(EEG, 'face_180');
+cfg = [];
+cfg.trials = twarze_odwrotnie;
+erp_twarze_odwrotnie = ft_timelockanalysis(...
+    cfg, eeg);
+
+plot(erp_twarze_prosto.time, ...
+    erp_twarze_prosto.avg(47,:), 'g');
+hold on
+plot(erp_twarze_odwrotnie.time, ...
+    erp_twarze_odwrotnie.avg(47,:), 'r');
+```
