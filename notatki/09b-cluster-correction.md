@@ -19,12 +19,12 @@ Gdzie `Si` oznacza osobę numer `i`, a `wi` oznacza warunek numer `i`. Chcemy wi
 ### Z czego skorzystamy?
 * na pewno z pętli `for`
 * skorzystamy też z macierzy komórkowych, krótkie przypomnienie:  
-  ```matlab
-  % tworzymy "pustą" macierz komórkową o rozmiarach 3 na 1:
-  mac_kom = cell(3,1);
-  % wrzucamy do drugiej komórki wektor:
-  mac_kom{2} = [3, 5, 1, 8];
-  ```
+```matlab
+% tworzymy "pustą" macierz komórkową o rozmiarach 3 na 1:
+mac_kom = cell(3,1);
+% wrzucamy do drugiej komórki wektor:
+mac_kom{2} = [3, 5, 1, 8];
+```
 * `pop_loadset` - wczytuje nam dane w eeglabowym formacie `set`
 * `eeg2ftrip`   - konwertuje wczytane dane z formatu eeglabowego na fieldtripowy
 * `ktory_war`   - podaje numery triali pochodzących z danego warunku
