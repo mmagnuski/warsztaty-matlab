@@ -17,8 +17,8 @@ Chcemy wczytać i przetworzyć dane tak aby znajdowały się w macierzy komórko
 Gdzie `Si` oznacza osobę numer `i`, a `wi` oznacza warunek numer `i`. Chcemy więc aby w kolejnych komórkach macierzy komórkowej znajdowały się najpierw oba porównywane warunki pierwszej osoby (najpierw pierwszy, potem drugi), następnie oba porównywane warunki drugiej osoby (pierwszy, potem drugi) i tak dalej - dla wszystkich osób.
 
 ### Z czego skorzystamy?
-* na pewno z pętli `for` :smile:
-* skorzystamy też z macierzy komórkowych, krótkie przypomnienie:
+* na pewno z pętli `for`
+* skorzystamy też z macierzy komórkowych, krótkie przypomnienie:  
   ```matlab
   % tworzymy "pustą" macierz komórkową o rozmiarach 3 na 1:
   mac_kom = cell(3,1);
