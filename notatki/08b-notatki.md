@@ -1,7 +1,6 @@
-# Analiza grupowa
+# Zajęcia na których nie zrobiliśmy wiele
 
-## Wstęp
-
+## Kwestie początkowe
 #### Czy wszystko działa? (ok 10 min)
 Sprawdźcie czy na waszym komputerze:
 * działa internet
@@ -17,8 +16,7 @@ i zmieńcie wszystkie linijki z `!git pull` na `!D:\Git\git-cmd.exe git pull`.
 Jeżeli macie gita zainstalowanego właśnie w folderze `D:\Git` - git powinien teraz dobrze działać przy startupie.
 
 #### Sprawy organizacyjne
-Cicho na Githubie w sprawie poprawy :sad:
-
+Niedługo w bibliotece komputery będą wyposażone w matlaba.
 
 ## Pierwsze zadanie (max 10-15 minut)
 Pierwsze dzisiejsze zadanie opiera się na video tutorialu, który mieliście mam nadzieję obejrzeć. W notatkach z poprzednich zajęć znajdziecie kod, który był efektem końcowy tutorialowych zmagań. W folderze kod tego repozytorium jest natomiast kod funkcji `losuj_n`, także tą funkcją nie musicie się przejmować.
@@ -31,11 +29,5 @@ Podpowiedzi:
 - kod musi sprawdzić ile jest triali w wybranyn przez Was warunku - najprawdopodobniej jest ich mniej niż 100, więc musicie adekwatnie zmienić zakres `t` w nadrzędnej pętli.
 - w razie niejasności bądź innych trudności - pytajcie się!
 
-## Delikatne wprowadzenie teoretyczne do analiz grupowych
-Tutaj was chwilkę pozanudzam albo wręcz entuzjazm wzniecę - kto to wie?
-
-## Praktyczne starcie z analizą grupową
-Piersze starcie z analizą grupową będzie łagodne. Nie będziecie musieli specjalnie dużo pisać samemu. Odpwoiednie ustawienie danych i zdefiniowanie konfiguracji (struktura `cfg` dla fieldtripa) jest wykonywane przez funkcę `licz_stat`, którą Wam napisałem. Dopiero później po wstępnym oswojeniu się z analizą grupową zanurkujemy w kwestie własnoręcznego definiowania fieldtripowi tego, co chcemy osiągnąć.
-
-### wczytujemy odpowiednio dane
-Aby `fieldtrip` ogarnął co za dane dostaje (które osoby przynależą do którego warunku itp.) trzeba mu o tym powiedzieć tworząc i podając mu strukturę `cfg`. Na razie to za Was robi `licz_stat` więc pliki 
+(tu okazało się że mało kto oglądał w całości tutorial)
+(więc dalej przerobiliśmy pokrótce to, co było w tutorialu)
