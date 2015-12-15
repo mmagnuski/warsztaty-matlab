@@ -34,7 +34,42 @@ mac_kom{2} = [3, 5, 1, 8];
 To zadanie dla Was! W poprzedniej sekcji kolejność jest już zasugerowana, ale spróbujcie złożyć to w działający kod.
 
 ### Rozwiązanie
-`na razie nic tu nie ma aby was nie kusiło by kopiować`
+```matlab
+fl = dir('*.set'); % musimy być w odpowiednim folderze
+N = length(fl); % ilość plików/osób badanych
+dat = cell(N*2, 1); % tutaj będziemy składować erpy
+
+conditions = {'face_0', 'car_0'}; % z tych warunków chcemy erpy
+Ncond = length(conditions); % ilość warunków
+
+cfg = [];
+for s = 1:N
+	EEG = pop_loadset(fl(s).name);
+	eeg = eeg2ftrip(EEG);
+
+	for c = 1:Ncond
+		cfg.trial = ktory_war(EEG, conditions{c});
+		dat{(s-1)*Ncond + c} = ft_timelockedanalysis(cfg, eeg);
+	end
+end
+```
+
+Nie przejmujcie się zbytnio tym, że `dat` jest adresowane przez
+`(s-1)*Ncond + c` - to po prostu bardziej uniwersalny sposób,
+który zadziała dla różnej ilości warunków. Dla wyjaśnienia jednak:
+```
+gdy s wynosi 1:
+dla trzech warunków (Ncond wynosi wtedy 3)
+pierwszy warunek (c = 1) wyląduje w:
+(s-1)*Ncond + c
+(1-1)*3 + 1
+1
+elemencie macierzy komórkowej dat
+
+dla s równego 2, cały czas trzech warunków, c równego 2 mamy:
+(2-1)*3 + 2
+a więc 5 element
+```
 
 ## puszczamy cluster-correction
 
