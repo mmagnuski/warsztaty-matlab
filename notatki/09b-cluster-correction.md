@@ -37,19 +37,19 @@ To zadanie dla Was! W poprzedniej sekcji kolejność jest już zasugerowana, ale
 ```matlab
 fl = dir('*.set'); % musimy być w odpowiednim folderze
 N = length(fl); % ilość plików/osób badanych
-dat = cell(N*2, 1); % tutaj będziemy składować erpy
+dane = cell(N*2, 1); % tutaj będziemy składować erpy
 
 conditions = {'face_0', 'car_0'}; % z tych warunków chcemy erpy
 Ncond = length(conditions); % ilość warunków
 
-cfg = [];
+cfg = []; % na wszelki wypadek - pusta struktura do konfiguracji
 for s = 1:N
 	EEG = pop_loadset(fl(s).name);
 	eeg = eeg2ftrip(EEG);
 
 	for c = 1:Ncond
 		cfg.trial = ktory_war(EEG, conditions{c});
-		dat{(s-1)*Ncond + c} = ft_timelockedanalysis(cfg, eeg);
+		dane{(s-1)*Ncond + c} = ft_timelockedanalysis(cfg, eeg);
 	end
 end
 ```
@@ -109,7 +109,7 @@ cfg.ivar  = 1;
 stat = ft_timelockstatistics(cfg, data1, data2);
 ```
 
-Omówimy jeszcze te kroki, ale większość z nich jest dosyć powtarzalna, więc w `braintools` mam funkcję które skracają tę litanię powyżej do kilku linijek. Ale zaczniemy od czegoś jeszcze prostszego: `licz_stat`.
+Omówimy jeszcze te kroki, ale większość z nich jest dosyć powtarzalna, więc w `braintools` mam funkcje które skracają tę litanię powyżej do kilku linijek. Ale zaczniemy od czegoś jeszcze prostszego: `licz_stat`.
 
 ### w lepszym świecie (`licz_stat`)
 Aby umożliwić Wam łatwy start napisałem dla Was funkcję `licz_stat`, która odbiera od Was dane i korzystając z kilku funkcji z `braintools` tworzy konfigurację dla funkcji `ft_timelockstatistics`.
