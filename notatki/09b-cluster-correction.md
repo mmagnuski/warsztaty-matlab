@@ -34,6 +34,8 @@ mac_kom{2} = [3, 5, 1, 8];
 To zadanie dla Was! W poprzedniej sekcji kolejność jest już zasugerowana, ale spróbujcie złożyć to w działający kod.
 
 ### Rozwiązanie
+
+#### Nie dziala:
 ```matlab
 fl = dir('*.set'); % musimy być w odpowiednim folderze
 N = length(fl); % ilość plików/osób badanych
@@ -54,6 +56,7 @@ for s = 1:N
 end
 ```
 
+
 Nie przejmujcie się zbytnio tym, że `dat` jest adresowane przez
 `(s-1)*Ncond + c` - to po prostu bardziej uniwersalny sposób,
 który zadziała dla różnej ilości warunków. Dla wyjaśnienia jednak:
@@ -70,6 +73,28 @@ dla s równego 2, cały czas trzech warunków, c równego 2 mamy:
 (2-1)*3 + 2
 a więc 5 element
 ```
+
+#### Dziala:
+```matlab
+pliki = dir('*.set'); 
+ 
+for s = 1:length(pliki) 
+ 
+    EEG = pop_loadset(pliki(s).name);
+    eeg = eeg2ftrip(EEG);
+ 
+    cfg.trials = ktory_war(EEG, 'face_0');
+    data{(s*2)-1} = ft_timelockanalysis(cfg, eeg);
+ 
+    cfg.trials = ktory_war(EEG, 'car_0');
+    data{s*2} = ft_timelockanalysis(cfg, eeg);
+ 
+end
+ 
+stat = licz_stat(data);
+```
+
+
 
 ## puszczamy cluster-correction
 
