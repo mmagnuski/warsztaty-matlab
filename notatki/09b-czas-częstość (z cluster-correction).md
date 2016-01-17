@@ -48,7 +48,10 @@ eeg = eeg2ftrip(EEG);
 ```
 
 ### Widmo
-Najpierw spróbujemy po prostu widmo, tworzymy cfg dla funkcji `ft_freqanalysis`:
+Najpierw spróbujemy po prostu widmo, czyli zawartość różnych częstotliwości w sygnale niezależnie od czasu. 
+
+#### komenda
+Tworzymy strukturę `cfg` i używamy funkcji `ft_freqanalysis`:
 ```matlab
 cfg.method  = 'mtmfft';
 cfg.channel = 'E47';
@@ -58,6 +61,7 @@ cfg.taper   = 'hanning';
 widmo = ft_freqanalysis(cfg, eeg);
 ```
 
+#### opis parametrów
 Co znaczą te wszystkie parametry? Po kolei:
 - `method` - metoda, której używamy do oszacowania częstotliwości. Użyte przez nas `'mtmfft'` oznacza "multitapering fast fourier transform". Faktycznie, ze względu na podawany parametr `taper` korzystamy ze zwykłej transformaty Fouriera. Jeżeli nie rozumiesz o co chodzi - nie przejmuj się, nie omawialiśmy (niestety) transformaty Fouriera na zajęciach.
 - `channel` - kanał (bądź kanały), które chcemy przeanalizować
@@ -87,18 +91,55 @@ Co znaczą te wszystkie parametry? Po kolei:
   ```
   ![niewygładzony (czerwony) i wygładzony okienkiem (zieolny) sygnał EEG](grafiki/10_02_wygladzanie_okienkiem.PNG)
 
-dodatkowe opcje:
+#### output
+Zajrzyjmy sobie do tego, co przechowuje teraz zmienna `widmo`:
+```
+>> widmo
+widmo = 
+        label: {'E47'}
+       dimord: 'chan_freq'
+         freq: [1x29 double]
+    powspctrm: [1x29 double]
+         elec: [1x1 struct]
+          cfg: [1x1 struct]
+```
+
+W polu `freq` mamy informację o częstotliwości (w Hz) kolejnych punktów częstotliwościowych. W `powspctrm` (skrót od *power spectrum*) jest natomiast moc sygnału (amplituda podniesiona do kwadratu). `dimord` mówi nam jakie są wymiary danych obecnych w `powspctrm` - `chan_freq` czyli kanały na częstotliwości. Widzimy, że rozmiar `powspctrm` to [1x29] - jeden kanał, 29 częstotliwości. W `label` mamy informacje o nazwach elektrod. 
+
+#### Rysujemy widmo
 ```matlab
-cfg.foi = [3:0.5:25]; % cały wektor interesujących nas częstotliwości
-cfg.keeptrials = 'yes'; % chcemy otrzymać widmo dla każdego triala, nie tylko średnią
+plot(widmo.freq, widmo.powspctrm);
+```
+![widmo z wyraźnym pikiem w alfie](grafiki/10_03_plot_widmo.PNG)
+
+
+#### dodatkowe opcje w `cfg`
+Możemy podać cały wektor interesujących nas częstotliwości:
+```matlab
+cfg.foi = [3:0.5:25];
+```
+Gdy natomiast chcemy otrzymać widmo dla każdego triala (a nie tylko średnią) piszemy:
+```matlab
+cfg.keeptrials = 'yes';
 ```
 
 ### Czas częstość:
+
+#### komenda
 ```matlab
 cfg.method    ='mtmconvol';
-cfg.t_ftimwin = 0.3;
-cfg.toi       = [-0.5:0.1:0.7];
+cfg.t_ftimwin = 0.2;
+cfg.toi       = [-0.2:0.05:0.5];
 ```
+
+#### opis parametrów
+*Coming soon*
+
+#### rysujemy czas-częstość
+*Coming soon*
+
+#### baseline correction
+*Coming soon*
 
 ### pętla przez osoby i statystyki
 Zadanie dla Was! :) (praca domowa! - nie zdążylimy na zajęciach dojsć tu)
