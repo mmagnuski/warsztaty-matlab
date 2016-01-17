@@ -127,9 +127,18 @@ cfg.keeptrials = 'yes';
 
 #### komenda
 ```matlab
+cfg = [];
 cfg.method    ='mtmconvol';
-cfg.t_ftimwin = 0.2;
 cfg.toi       = [-0.2:0.05:0.5];
+cfg.foi       = [3:60];
+cfg.t_ftimwin = 0.2;
+
+tfr = ft_freqanalysis(cfg, eeg);
+```
+
+:warning: Jeżeli wywala Ci się powyższa komenda - znaczy to prawdopodobnie, że masz wyjątkowo nowego fieldtripa, w którym troszkę Panowie Fieldtripowcy napsuli (FieldTrip jest wypuszczany codziennie, więc w zależności od dnia gdy ściągamy/update'ujemy fieldtripa możemy czasem trafić na jakiegoś bug'a). Aby obejść błąd uzupełnij `cfg` o:
+```matlab
+cfg.t_ftimwin = repmat([0.2], [1, length(cfg.foi)]);
 ```
 
 #### opis parametrów
