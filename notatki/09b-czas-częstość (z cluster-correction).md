@@ -169,7 +169,7 @@ Gdy zapiszemy powyższą funkcję to (pod warunkiem, że jest ona na ścieżce m
 ```matlab
 plot_tfr(tfr, 1);
 ```
-Otrzymamy taki wykres:
+Otrzymamy taki wykres:  
 ![czas-częstość, wykres 01](grafiki/10_04_plot_tfr.PNG)
 
 Na razie dużo nie widać. Z dwóch powodów:
