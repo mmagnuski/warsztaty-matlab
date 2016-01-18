@@ -71,7 +71,7 @@ Co znaczą te wszystkie parametry? Po kolei:
   % rysujemy sobie okienko długości 250 próbek
   plot(hanning(250));
   ```
-  [tutaj obrazek]
+  ![kształt okienka hanning](grafiki/10_01_okienko_hanning.PNG)
 
   Zobaczmy też jaki jest efekt wygładzenia. Na wykresie rysujemy sygnał oryginalny (czerwony) oraz sygnał wygładzony okienkiem (zielony):
   ```matlab
