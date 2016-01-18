@@ -129,6 +129,7 @@ cfg.keeptrials = 'yes';
 ```matlab
 cfg = [];
 cfg.method    ='mtmconvol';
+cfg.taper     = 'hanning';
 cfg.toi       = [-0.2:0.05:0.5];
 cfg.foi       = [3:60];
 cfg.t_ftimwin = 0.2;
@@ -136,19 +137,68 @@ cfg.t_ftimwin = 0.2;
 tfr = ft_freqanalysis(cfg, eeg);
 ```
 
-:warning: Jeżeli wywala Ci się powyższa komenda - znaczy to prawdopodobnie, że masz wyjątkowo nowego fieldtripa, w którym troszkę Panowie Fieldtripowcy napsuli (FieldTrip jest wypuszczany codziennie, więc w zależności od dnia gdy ściągamy/update'ujemy fieldtripa możemy czasem trafić na jakiegoś bug'a). Aby obejść błąd uzupełnij `cfg` o:
+:warning: Jeżeli wywala Ci się powyższa komenda - znaczy to prawdopodobnie, że masz nowego fieldtripa, w którym mógł wkraść się błąd (FieldTrip jest wypuszczany codziennie, więc w zależności od dnia gdy ściągamy/update'ujemy fieldtripa możemy czasem trafić na jakiegoś bug'a). Aby obejść błąd uzupełnij `cfg` o:
 ```matlab
 cfg.t_ftimwin = repmat([0.2], [1, length(cfg.foi)]);
 ```
 
 #### opis parametrów
-*Coming soon*
+- `method`, znów, metoda której używamy. `mtmconvol` - przede wszystkim - "convol" od convolution czyli splotu - operacji, o której nie mówiliśmy, a która jest podstawą liczenia zmian czestotliwości w czasie. Wystarczy, że będziecie pamiętac, że `mtmconvol` jest do czasu-częstości a `mtmfft` do czestotliwości po prostu.
+- `taper` - jak wcześniej, okienko. Tyle że teraz okienko będzie przesuwać się w czasie (patrz `cfg.toi`)
+- `toi` - *time(s) of interest* - wektor czasów, które nas interesują. Faktycznie każdy z takich punktów czasowych to środek okienka, którym sprawdzamy zawartość czestotliwościową sygnału.
+- `foi` - *frequenc(y/ies) of interest* = wektor częstotliwości, które chcemy sprawdzić
+- `t_ftimwin` - długośc okienka, którym idziemy przez sygnał. Wartość ta może być różna dla różnych częstotliwości, które nas interesują. Np `cfg.t_ftimwin = 1/cfg.foi * 3;` daje dla każdej częstotliwości długość okienka równą długości trzech cykli danej częstotliwości.
 
 #### rysujemy czas-częstość
-*Coming soon*
+Możemy napisać własną funkcję do rysowania czasu-częstości:
+```matlab
+function plot_tfr(tfr, chan)
+
+% plotujemy
+im = imagesc(squeeze(tfr.powspctrm(chan,:,:)));
+
+% ustawiamy osie itp.
+set(gca, 'YDir', 'normal');
+set(im, 'XData', tfr.time([1,end]));
+set(im, 'YData', tfr.freq([1,end]));
+set(gca, 'XLim', tfr.time([1,end]));
+set(gca, 'YLim', tfr.freq([1,end]));
+```
+
+Gdy zapiszemy powyższą funkcję to (pod warunkiem, że jest ona na ścieżce matlaba) pisząc:
+```matlab
+plot_tfr(tfr, 1);
+```
+Otrzymamy taki wykres:
+![czas-częstość, wykres 01](grafiki/10_04_plot_tfr.PNG)
+
+Na razie dużo nie widać. Z dwóch powodów:
+1. Patrzymy na moc absolutną - a nie na zmiany względem prezentacji bodźca.
+2. Sygnał jest niezlogarytmizowany, więc niewiele widać w wyższych częstotliwościach.
+
+Logarytmizację zostawimy sobie na kiedy indziej. Chcemy zobaczyć zmiany względem pojawienia się bodźca - czas więc na baseline correction!
 
 #### baseline correction
-*Coming soon*
+Tak jak robiliśmy korektę aby oglądać potencjały wywołane traktując to, co dzieje się przed bodźcem jako nasze odniesienie (nasz punkt zero) - tak też możemy korektę zrobić teraz.
+Metod baseline'u dla danych czas-częstość jest sporo - możemy patrzeć na różnicę względem czasu sprzed bodźca, na procentowy wzrost/spadek, bądź wzrost/spadek opisywany w odchyleniach standardowych aktywności sprzed poajwienia się bodźca albo też zmianę opisywaną w dB itp. Aby nie komplikować nadmiernie tego kroku skupimy się zmianie procentowej.
+W FieldTripie do przeprowadzenia baseline'u służy nam funkcja `ft_freqbaseline`:
+```matlab
+cfg = [];
+cfg.baseline = [-0.25, 0];
+cfg.baselinetype = 'relchange';
+
+tfr_bsl = ft_freqbaseline(cfg, tfr);
+```
+`cfg.baseline` opisuje nam czas względem którego chcemy obserwować zmiany, natomist `cfg.baselinetype` pozwala określić rodzaj baseline'u. Wybralismy opcję `'relchange'`, która opisuje procentową zmianę.
+
+Wyplotujmy teraz `tfr_bls`:
+```matlab
+plot(tfr_bsl, 1);
+```
+![czas-częstość z baseline'em, wykres 02](grafiki/10_05_plot_tfr_bsln.PNG)
+
+
+Widzimy wzrost niskich częstotliwości po prezentacji bodźca (to jest to, czego część obserwujemy jako ERPa - ERP to przede wszystkim aktywność w niskich częstotliwościach). Widzimy też spadek częstotliwości wyższych. Ostatecznie interesuje nas różnica w tych zmianach częstotliwościowych w czasie w zależności od warunku, któremu poddana jest osoba badana!
 
 ### pętla przez osoby i statystyki
 Zadanie dla Was! :) (praca domowa! - nie zdążylimy na zajęciach dojsć tu)
@@ -156,3 +206,6 @@ Będę Wam pomagał trochę:
 * pętlę przez osoby robiliśmy już wiele razy, także to zróbcie samodzielnie
 * pamiętajcie, że chcemy skontrastować jakieś dwa warunki - `ktory_war` się przyda!
 * do statystyk skorzystajcie z tego co zobaczyliście w środku `licz_stat`: przede wszystkim `get_cluster_cfg`. Cluster-correction zrobicie funkcją `ft_freqstatistics`
+
+### Wizualiazacja efektu
+*Coming soon*
