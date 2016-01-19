@@ -24,7 +24,7 @@ cfg.design(2,:) = tmp(:);
 cfg.neighbours = get_neighbours('EGI64');
 
 % cluster-correction with fieldtrip
-if hasfield(fls{1}, 'powspctrm')
+if isfield(fls{1}, 'powspctrm')
     stat = ft_freqstatistics(cfg, fls{:});
 else
     stat = ft_timelockstatistics(cfg, fls{:});
