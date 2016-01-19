@@ -146,7 +146,7 @@ Narysuj oba erpy na jednym wykresie tak aby erp z pierwszego warunku był na zie
 ```
 
 ###Pętle
-13 Poniższa pętla powinna iść przez kolejne elementy wektora `lasypanstwowe` i tworzyc kolejne elementy wektora `turbosprywatyzowane` dodając do każdego elementu `lasypanstwowe` dwa. Popraw błędy w kodzie poniżej:
+13 Poniższa pętla powinna iść przez kolejne elementy wektora `lasy` i tworzyc kolejne elementy wektora `turbo` odejmujac od każdego elementu `lasy` osiem. Popraw błędy w kodzie poniżej:
 ```matlab
 for uj = 1:length(turbosprywatyzowane)
 	turbosprywatyzowane(i) = lasypanstwowe(uj-1) + 2;
@@ -155,8 +155,8 @@ end
 
 14 Uzupełnij kod poniżej tak aby pętla wczytywała kolejne pliki eeg:
 ```matlab
-lst = dir('*.set');
-for k = 1:length(lst)
+___ = dir('*.set');
+for k = 1:length(____)
 	________________________________
 	plotuj_to(EEG);
 end
