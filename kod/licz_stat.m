@@ -1,11 +1,11 @@
 function stat = licz_stat(fls)
 
-% tworzy konfiguracjê do statystyk fieldtripowych
+% tworzy konfiguracjÃª do statystyk fieldtripowych
 % oraz zapuszcza fieldtripowe cluster-correction
 %
-% za³o¿enia:
-% * porównanie testem t dla pomiarów zale¿nych
-% * fls - macierz komórkowa, która po kolei ma
+% zaÂ³oÂ¿enia:
+% * porÃ³wnanie testem t dla pomiarÃ³w zaleÂ¿nych
+% * fls - macierz komÃ³rkowa, ktÃ³ra po kolei ma
 %   w sobie {osoba01_warunek01, osoba01_warunek02,
 %   osoba02_warunek01, osoba02_warunek_02}
 
@@ -24,4 +24,8 @@ cfg.design(2,:) = tmp(:);
 cfg.neighbours = get_neighbours('EGI64');
 
 % cluster-correction with fieldtrip
-stat = ft_timelockstatistics(cfg, fls{:});
+if hasfield(fls{1}, 'powspctrm')
+    stat = ft_freqstatistics(cfg, fls{:});
+else
+    stat = ft_timelockstatistics(cfg, fls{:});
+end
