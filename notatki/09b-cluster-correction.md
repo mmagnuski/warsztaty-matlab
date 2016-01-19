@@ -35,7 +35,6 @@ To zadanie dla Was! W poprzedniej sekcji kolejność jest już zasugerowana, ale
 
 ### Rozwiązanie
 
-#### Nie dziala:
 ```matlab
 fl = dir('*.set'); % musimy być w odpowiednim folderze
 N = length(fl); % ilość plików/osób badanych
@@ -50,7 +49,7 @@ for s = 1:N
 	eeg = eeg2ftrip(EEG);
 
 	for c = 1:Ncond
-		cfg.trial = ktory_war(EEG, conditions{c});
+		cfg.trials = ktory_war(EEG, conditions{c});
 		dane{(s-1)*Ncond + c} = ft_timelockedanalysis(cfg, eeg);
 	end
 end
@@ -73,27 +72,6 @@ dla s równego 2, cały czas trzech warunków, c równego 2 mamy:
 (2-1)*3 + 2
 a więc 5 element
 ```
-
-#### Dziala:
-```matlab
-pliki = dir('*.set'); 
- 
-for s = 1:length(pliki) 
- 
-    EEG = pop_loadset(pliki(s).name);
-    eeg = eeg2ftrip(EEG);
- 
-    cfg.trials = ktory_war(EEG, 'face_0');
-    data{(s*2)-1} = ft_timelockanalysis(cfg, eeg);
- 
-    cfg.trials = ktory_war(EEG, 'car_0');
-    data{s*2} = ft_timelockanalysis(cfg, eeg);
- 
-end
- 
-stat = licz_stat(data);
-```
-
 
 
 ## puszczamy cluster-correction
