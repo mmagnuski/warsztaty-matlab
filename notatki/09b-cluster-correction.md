@@ -75,6 +75,9 @@ a więc 5 element
 
 
 ## puszczamy cluster-correction
+```matlab
+stat = licz_stat(data);		
+```
 
 ### w fieldtripie
 W tutorialach do fieldtripa przeprowadzanie cluster-correction często przedstawia się tak:
