@@ -3,22 +3,30 @@ Test
 
 1. Czym jest potencjał wywołany - 
    opisz swoimi słowami.
+```
 _________________________________________________________
 _________________________________________________________
 _________________________________________________________
+```
 
 2. Jak zrobić erpa z pomocą fieldtripa?
 a) jakiej komendy używamy,
    aby utworzyć potencjał wywołany:
+```
 __________________________________
+```
 
 b) jak poprosimy fieldtripa, aby policzył nam erpa tylko dla 15 pierwszych powtórzeń?
+```
 ___________________________________
 ___________________________________
+```
 
 c) jak poprosimy fieldtripa aby policzył erpa tylko dla powtórzeń związanych z warunkiem 'mopsik_tanczy'?
+```
 ___________________________________
 ___________________________________
+```
 
 3.. Opisz własnymi słowami problem wielokrotnych porównań w badaniach EEG:
 _________________________________________________________
